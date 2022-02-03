@@ -1,0 +1,25 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>New Game</h1>
+  <div  class="container row align-items-center justify-content-center no-gutters">
+    <% @letters.each do |letter| %>
+      <div class="letter">
+        <p><%= letter %></p>
+      </div>
+    <% end %>
+  </div>
+  <form action="/score" method="post">
+    <h4>What is the longest word that you can find?</h4>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" name="word" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      <input type="hidden" id="grid" name="grid" value="<%=@letters%>" />
+      <%# <div class="input-group-prepend"> %>
+      <input type="submit" aria-label="Checkbox for following text input">
+      <%# </div> %>
+    </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+</body>
